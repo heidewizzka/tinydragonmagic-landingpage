@@ -224,7 +224,7 @@ button {
 }
 
 .hero-grid {
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 0.95fr 1.15fr;
   align-items: center;
   min-height: calc(100vh - 5rem);
 }
@@ -240,7 +240,6 @@ button {
 
 .eyebrow,
 .meta-line,
-.panel-label,
 .carousel-kicker {
   margin: 0 0 var(--space-2);
   font-size: 0.8rem;
@@ -250,8 +249,7 @@ button {
 }
 
 .eyebrow,
-.meta-line,
-.panel-label {
+.meta-line {
   color: rgba(255, 218, 187, 0.92);
 }
 
@@ -303,7 +301,6 @@ p {
   color: var(--color-image-text);
 }
 
-.panel-card p,
 .hero-copy p,
 .image-card-copy p,
 .carousel-caption p {
@@ -351,14 +348,90 @@ p {
 }
 
 .panel-card {
-  background: rgba(26, 19, 15, 0.5);
+  position: relative;
+  aspect-ratio: 5 / 7;
+  overflow: hidden;
+  padding: 0;
   border-color: rgba(255, 228, 200, 0.16);
+  background: rgba(26, 19, 15, 0.5);
   backdrop-filter: blur(10px);
+  transform: translateY(0) scale(1);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
 }
 
-.panel-card a {
-  font-weight: 700;
+.panel-card-media {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.panel-card-game .panel-card-media {
+  background-image: url("assets/images/kingdom_of_krawall/hero/landing_page_card_background.png");
+}
+
+.panel-card-streams .panel-card-media {
+  background-image:
+    radial-gradient(circle at top right, rgba(199, 138, 255, 0.28), transparent 24%),
+    linear-gradient(135deg, rgba(74, 43, 110, 0.98), rgba(32, 23, 50, 0.94));
+}
+
+.panel-card-mentoring .panel-card-media {
+  background-image:
+    radial-gradient(circle at top left, rgba(146, 204, 255, 0.24), transparent 24%),
+    linear-gradient(135deg, rgba(35, 68, 102, 0.98), rgba(22, 38, 58, 0.94));
+}
+
+.panel-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14, 11, 10, 0.04), rgba(14, 11, 10, 0.22));
+}
+
+.panel-card-title {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: auto;
+  max-width: min(72%, 13rem);
+  justify-content: center;
+  left: 50%;
+  bottom: 1.15rem;
+  transform: translateX(-50%);
+  padding: 0.9rem 1rem 1rem;
+  border-radius: 1.5rem;
+  background: rgba(26, 18, 15, 0.82);
+  box-shadow: 0 10px 24px rgba(12, 8, 7, 0.22);
+  backdrop-filter: blur(8px);
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.02;
+  text-align: center;
   color: var(--color-image-text);
+  text-wrap: balance;
+}
+
+.panel-card:hover,
+.panel-card:focus-visible {
+  transform: translateY(-6px) scale(1.015);
+  border-color: rgba(255, 214, 176, 0.4);
+  box-shadow: 0 24px 50px rgba(24, 15, 10, 0.28);
+}
+
+.panel-card:hover .panel-card-overlay,
+.panel-card:focus-visible .panel-card-overlay {
+  background: linear-gradient(180deg, rgba(14, 11, 10, 0.02), rgba(14, 11, 10, 0.18));
+}
+
+.panel-card:hover .panel-card-title,
+.panel-card:focus-visible .panel-card-title {
+  background: rgba(30, 20, 17, 0.86);
+  transform: translateX(-50%) translateY(-2px);
 }
 
 .image-card {
@@ -512,6 +585,18 @@ p {
   color: var(--color-image-text);
   background: rgba(255, 249, 241, 0.1);
   cursor: pointer;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease;
+}
+
+.carousel-button:hover,
+.carousel-button:focus-visible {
+  border-color: rgba(255, 214, 176, 0.4);
+  background: rgba(255, 249, 241, 0.16);
+  box-shadow: 0 24px 50px rgba(24, 15, 10, 0.28);
 }
 
 .carousel-viewport {
@@ -572,6 +657,13 @@ p {
   z-index: 2;
 }
 
+.carousel-button-left:hover,
+.carousel-button-left:focus-visible,
+.carousel-button-right:hover,
+.carousel-button-right:focus-visible {
+  transform: translateY(calc(-50% - 6px)) scale(1.015);
+}
+
 .carousel-button-left {
   left: 0;
 }
@@ -622,6 +714,7 @@ p {
   overflow: hidden;
   cursor: pointer;
   opacity: 0.78;
+  transform: translateY(0) scale(1);
   transition:
     transform 220ms ease,
     opacity 220ms ease,
@@ -641,6 +734,14 @@ p {
   opacity: 1;
   transform: translateY(-2px);
   box-shadow: 0 0 0 2px rgba(187, 90, 43, 0.22);
+}
+
+.carousel-dot:hover,
+.carousel-dot:focus-visible {
+  transform: translateY(-6px) scale(1.015);
+  opacity: 1;
+  border-color: rgba(255, 214, 176, 0.4);
+  box-shadow: 0 24px 50px rgba(24, 15, 10, 0.28);
 }
 
 .contact-grid {
@@ -665,7 +766,6 @@ p {
 @media (max-width: 900px) {
 
   .hero-grid,
-  .hero-panels,
   .feature-grid,
   .contact-grid,
   .contact-cards {
@@ -703,6 +803,15 @@ p {
   .carousel-header {
     align-items: start;
   }
+
+  .hero-panels {
+    grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr));
+  }
+
+  .hero-panels .panel-card {
+    width: 100%;
+  }
+
 }
 
 @media (max-width: 640px) {
