@@ -224,9 +224,13 @@ button {
 }
 
 .hero-grid {
-  grid-template-columns: 0.95fr 1.15fr;
-  align-items: center;
+  grid-template-columns: 1fr;
+  align-items: start;
   min-height: calc(100vh - 5rem);
+}
+
+.hero-copy {
+  max-width: 44rem;
 }
 
 .hero-panels {
