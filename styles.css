@@ -173,6 +173,18 @@ a {
     var(--overlay-games);
 }
 
+.section-streams .section-backdrop {
+  background-image:
+    radial-gradient(circle at top right, rgba(255, 196, 120, 0.18), transparent 22%),
+    linear-gradient(135deg, rgba(56, 37, 30, 0.96), rgba(25, 22, 27, 0.9));
+}
+
+.section-streams .section-overlay {
+  background:
+    linear-gradient(90deg, rgba(187, 90, 43, 0.12), rgba(187, 90, 43, 0.02)),
+    linear-gradient(180deg, rgba(18, 14, 13, 0.74), rgba(18, 14, 13, 0.4));
+}
+
 .section-mentoring .section-backdrop {
   background-image:
     radial-gradient(circle at top left, rgba(255, 221, 176, 0.14), transparent 24%),
@@ -268,12 +280,14 @@ p {
 
 .section-hero .hero-copy,
 .section-hero .panel-card,
+.section-streams .section-heading,
 .section-games .section-heading,
 .section-mentoring .section-heading {
   color: var(--color-image-text);
 }
 
 .section-hero .hero-text,
+.section-streams .section-heading p,
 .section-games .section-heading p,
 .section-mentoring .section-heading p {
   color: var(--color-image-muted);
