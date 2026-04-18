@@ -48,14 +48,14 @@
           <article class="panel-card">
             <p class="panel-label">Featured Game</p>
             <h2>Kingdom of Krawall</h2>
-            <p>One bold game stage with a trailer, features, and screenshot gallery.</p>
+            <p>One bold game stage with a single-media carousel for trailer and screenshots.</p>
             <a href="#games">Jump to Games</a>
           </article>
           <article class="panel-card">
             <p class="panel-label">Streams</p>
             <h2>Twitch</h2>
-            <p>...</p>
-            <a href="#games">Jump to Streams</a>
+            <p>Live development sessions, design decisions, and the rough edges of building in public.</p>
+            <a href="#streams">Jump to Streams</a>
           </article>
           <article class="panel-card">
             <p class="panel-label">Featured Offer</p>
@@ -70,70 +70,117 @@
     <section class="content-section section-with-backdrop section-games" id="games">
       <div class="section-backdrop" aria-hidden="true"></div>
       <div class="section-overlay" aria-hidden="true"></div>
-      <div class="container">
-
-        <article class="showcase-card">
-          <div class="showcase-hero">
-            <div class="showcase-copy">
-              <p class="meta-line">Strategy • PC • In Development</p>
-              <h3>Kingdom of Krawall</h3>
-              <p>
-                A short pitch for the game goes here. Keep this area focused on the main hook,
-                atmosphere, and what makes the project worth following.
-              </p>
-              <div class="tag-row" aria-label="Game highlights">
-                <span>Signature mechanic</span>
-                <span>Distinct world</span>
-                <span>Player fantasy</span>
+      <div class="container section-shell">
+        <article class="image-card image-card-game">
+          <div class="image-card-backdrop" aria-hidden="true"></div>
+          <div class="image-card-overlay" aria-hidden="true"></div>
+          <div class="image-card-content">
+            <div class="image-card-stack">
+              <div class="image-card-copy">
+                <p class="meta-line">Strategy • PC • In Development</p>
+                <div class="game-logo-wrap">
+                  <img class="game-logo" src="assets/images/kingdom_of_krawall/logo/library_logo.png"
+                    alt="Kingdom of Krawall logo">
+                </div>
+                <p>
+                  A short pitch for the game goes here. Keep this area focused on the main hook,
+                  atmosphere, and what makes the project worth following.
+                </p>
+                <div class="tag-row" aria-label="Game highlights">
+                  <span>Signature mechanic</span>
+                  <span>Distinct world</span>
+                  <span>Player fantasy</span>
+                </div>
               </div>
-            </div>
-            <div class="showcase-media">
-              <img src="assets/images/kingdom_of_krawall/hero/landing_page_hero.png"
-                alt="Key art for Kingdom of Krawall">
-            </div>
-          </div>
 
-          <div class="feature-grid">
-            <article class="feature-card">
-              <h4>Feature One</h4>
-              <p>Describe the first standout system, loop, or emotional hook.</p>
-            </article>
-            <article class="feature-card">
-              <h4>Feature Two</h4>
-              <p>Describe the second standout aspect players should know about.</p>
-            </article>
-            <article class="feature-card">
-              <h4>Feature Three</h4>
-              <p>Describe the third major strength of the game experience.</p>
-            </article>
-          </div>
+              <div class="feature-grid feature-grid-on-card">
+                <article class="feature-card">
+                  <h4>Feature One</h4>
+                  <p>Describe the first standout system, loop, or emotional hook.</p>
+                </article>
+                <article class="feature-card">
+                  <h4>Feature Two</h4>
+                  <p>Describe the second standout aspect players should know about.</p>
+                </article>
+                <article class="feature-card">
+                  <h4>Feature Three</h4>
+                  <p>Describe the third major strength of the game experience.</p>
+                </article>
+              </div>
 
-          <div class="media-block">
-            <div class="video-frame">
-              <iframe src="https://www.youtube-nocookie.com/embed/LLgB48z94EM?rel=0" title="Kingdom of Krawall trailer"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                allowfullscreen></iframe>
-            </div>
-          </div>
+              <section class="media-carousel" aria-label="Kingdom of Krawall media gallery" data-carousel>
 
-          <div class="media-block">
-            <div class="gallery-grid">
-              <figure class="gallery-item">
-                <img src="assets/images/kingdom_of_krawall/screenshots/resource_collection.png"
-                  alt="Kingdom of Krawall screenshot showing resource collection" loading="lazy">
-                <figcaption>Resource collection</figcaption>
-              </figure>
-              <figure class="gallery-item">
-                <img src="assets/images/kingdom_of_krawall/screenshots/place_modifier.png"
-                  alt="Kingdom of Krawall screenshot showing modifier placement" loading="lazy">
-                <figcaption>Modifier placement</figcaption>
-              </figure>
-              <figure class="gallery-item">
-                <img src="assets/images/kingdom_of_krawall/screenshots/select_building.png"
-                  alt="Kingdom of Krawall screenshot showing building selection" loading="lazy">
-                <figcaption>Building selection</figcaption>
-              </figure>
+                <div class="carousel-viewport">
+                  <button class="carousel-button carousel-button-left" type="button" aria-label="Previous media"
+                    data-carousel-prev>
+                    &#8592;
+                  </button>
+
+                  <article class="carousel-slide is-active" data-carousel-slide>
+                    <div class="carousel-media video-frame">
+                      <iframe src="https://www.youtube-nocookie.com/embed/LLgB48z94EM?rel=0"
+                        title="Kingdom of Krawall trailer" loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                        allowfullscreen></iframe>
+                    </div>
+                    <div class="carousel-caption">
+                      <p class="carousel-kicker">Trailer</p>
+                      <h4>Watch the game in motion</h4>
+                    </div>
+                  </article>
+
+                  <article class="carousel-slide" data-carousel-slide>
+                    <div class="carousel-media">
+                      <img src="assets/images/kingdom_of_krawall/screenshots/resource_collection.png"
+                        alt="Kingdom of Krawall screenshot showing resource collection" loading="lazy">
+                    </div>
+                    <div class="carousel-caption">
+                      <p class="carousel-kicker">Screenshot 01</p>
+                      <h4>Resource collection</h4>
+                    </div>
+                  </article>
+
+                  <article class="carousel-slide" data-carousel-slide>
+                    <div class="carousel-media">
+                      <img src="assets/images/kingdom_of_krawall/screenshots/place_modifier.png"
+                        alt="Kingdom of Krawall screenshot showing modifier placement" loading="lazy">
+                    </div>
+                    <div class="carousel-caption">
+                      <p class="carousel-kicker">Screenshot 02</p>
+                      <h4>Modifier placement</h4>
+                    </div>
+                  </article>
+
+                  <article class="carousel-slide" data-carousel-slide>
+                    <div class="carousel-media">
+                      <img src="assets/images/kingdom_of_krawall/screenshots/select_building.png"
+                        alt="Kingdom of Krawall screenshot showing building selection" loading="lazy">
+                    </div>
+                    <div class="carousel-caption">
+                      <p class="carousel-kicker">Screenshot 03</p>
+                      <h4>Building selection</h4>
+                    </div>
+                  </article>
+
+                  <button class="carousel-button carousel-button-right" type="button" aria-label="Next media"
+                    data-carousel-next>
+                    &#8594;
+                  </button>
+                </div>
+
+                <div class="carousel-footer">
+                  <div class="carousel-dots" role="tablist" aria-label="Select media slide">
+                    <button class="carousel-dot is-active" type="button" aria-label="Go to trailer" aria-selected="true"
+                      data-carousel-dot="0"></button>
+                    <button class="carousel-dot" type="button" aria-label="Go to screenshot 1" aria-selected="false"
+                      data-carousel-dot="1"></button>
+                    <button class="carousel-dot" type="button" aria-label="Go to screenshot 2" aria-selected="false"
+                      data-carousel-dot="2"></button>
+                    <button class="carousel-dot" type="button" aria-label="Go to screenshot 3" aria-selected="false"
+                      data-carousel-dot="3"></button>
+                  </div>
+                </div>
+              </section>
             </div>
           </div>
         </article>
@@ -143,14 +190,15 @@
     <section class="content-section section-with-backdrop section-streams" id="streams">
       <div class="section-backdrop" aria-hidden="true"></div>
       <div class="section-overlay" aria-hidden="true"></div>
-      <div class="container">
-        <div class="section-heading">
-
-          <article class="showcase-card">
-            <div class="showcase-hero">
-              <div class="showcase-copy">
+      <div class="container section-shell">
+        <article class="image-card image-card-streams">
+          <div class="image-card-backdrop" aria-hidden="true"></div>
+          <div class="image-card-overlay" aria-hidden="true"></div>
+          <div class="image-card-content">
+            <div class="image-card-stack">
+              <div class="image-card-copy">
                 <p class="meta-line">Live development • Behind the scenes • Community</p>
-                <h3>Game Dev Streams</h3>
+                <h2>Game Dev Streams</h2>
                 <p>
                   Use this slot to frame your Twitch presence around building games in public, sharing
                   decisions, and inviting people into the development process.
@@ -167,67 +215,65 @@
                   </a>
                 </div>
               </div>
-              <div class="showcase-media placeholder-media">
-                <p>Stream visual or channel artwork</p>
+
+              <div class="feature-grid feature-grid-on-card">
+                <article class="feature-card">
+                  <h4>Build in Public</h4>
+                  <p>Show what you are making, what changed, and what is currently being explored.</p>
+                </article>
+                <article class="feature-card">
+                  <h4>Share the Process</h4>
+                  <p>Explain systems, decisions, experiments, and the messy reality of development.</p>
+                </article>
+                <article class="feature-card">
+                  <h4>Grow Community</h4>
+                  <p>Create a home for players and fellow developers who want to follow the journey.</p>
+                </article>
               </div>
             </div>
-
-            <div class="feature-grid">
-              <article class="feature-card">
-                <h4>Build in Public</h4>
-                <p>Show what you are making, what changed, and what is currently being explored.</p>
-              </article>
-              <article class="feature-card">
-                <h4>Share the Process</h4>
-                <p>Explain systems, decisions, experiments, and the messy reality of development.</p>
-              </article>
-              <article class="feature-card">
-                <h4>Grow Community</h4>
-                <p>Create a home for players and fellow developers who want to follow the journey.</p>
-              </article>
-            </div>
-          </article>
-        </div>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section class="content-section section-with-backdrop section-mentoring" id="mentoring">
       <div class="section-backdrop" aria-hidden="true"></div>
       <div class="section-overlay" aria-hidden="true"></div>
-      <div class="container">
+      <div class="container section-shell">
+        <article class="image-card image-card-mentoring">
+          <div class="image-card-backdrop" aria-hidden="true"></div>
+          <div class="image-card-overlay" aria-hidden="true"></div>
+          <div class="image-card-content">
+            <div class="image-card-stack">
+              <div class="image-card-copy">
+                <p class="meta-line">1:1 support • Feedback • Production clarity</p>
+                <h2>Mentoring Offer Placeholder</h2>
+                <p>
+                  Use this space for the core promise of the mentoring offer, including who it helps and
+                  what kind of transformation or support people can expect.
+                </p>
+                <div class="tag-row" aria-label="Mentoring highlights">
+                  <span>Project feedback</span>
+                  <span>Scope guidance</span>
+                  <span>Accountability</span>
+                </div>
+              </div>
 
-        <article class="showcase-card">
-          <div class="showcase-hero">
-            <div class="showcase-copy">
-              <p class="meta-line">1:1 support • Feedback • Production clarity</p>
-              <h3>Mentoring Offer Placeholder</h3>
-              <p>
-                Use this space for the core promise of the mentoring offer, including who it helps and
-                what kind of transformation or support people can expect.
-              </p>
-              <div class="tag-row" aria-label="Mentoring highlights">
-                <span>Project feedback</span>
-                <span>Scope guidance</span>
-                <span>Accountability</span>
+              <div class="feature-grid feature-grid-on-card">
+                <article class="feature-card">
+                  <h4>Clarity</h4>
+                  <p>Define the type of strategic or creative clarity the offer provides.</p>
+                </article>
+                <article class="feature-card">
+                  <h4>Momentum</h4>
+                  <p>Explain how the mentoring helps developers move their project forward.</p>
+                </article>
+                <article class="feature-card">
+                  <h4>Experience</h4>
+                  <p>Describe the practical support or knowledge that makes the offer valuable.</p>
+                </article>
               </div>
             </div>
-            <div class="showcase-media placeholder-media">
-              <p>Mentoring hero image</p>
-            </div>
-          </div>
-
-          <div class="feature-grid">
-            <article class="feature-card">
-              <h4>Clarity</h4>
-              <p>Define the type of strategic or creative clarity the offer provides.</p>
-            </article>
-            <article class="feature-card">
-              <h4>Momentum</h4>
-              <p>Explain how the mentoring helps developers move their project forward.</p>
-            </article>
-            <article class="feature-card">
-              <h4>Experience</h4>
-              <p>Describe the practical support or knowledge that makes the offer valuable.</p>
-            </article>
           </div>
         </article>
       </div>

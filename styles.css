@@ -1,11 +1,11 @@
 :root {
   --color-bg: #efe7da;
-  --color-surface: #fff9f1;
-  --color-surface-strong: rgba(255, 252, 247, 0.92);
-  --color-surface-glass: rgba(255, 249, 241, 0.72);
+  --color-surface-strong: rgba(255, 252, 247, 0.9);
+  --color-surface-glass: rgba(255, 249, 241, 0.18);
+  --color-surface-soft: rgba(255, 249, 241, 0.74);
   --color-text: #1c1a18;
   --color-muted: #5f584f;
-  --color-border: rgba(214, 201, 182, 0.85);
+  --color-border: rgba(214, 201, 182, 0.62);
   --color-accent: #bb5a2b;
   --color-accent-strong: #8f3d16;
   --color-image-text: #fff7ef;
@@ -58,6 +58,10 @@ img {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button {
+  font: inherit;
 }
 
 .container {
@@ -156,8 +160,7 @@ a {
   z-index: 0;
 }
 
-.section-hero .section-backdrop,
-.section-games .section-backdrop {
+.section-hero .section-backdrop {
   background-image: url("assets/images/kingdom_of_krawall/hero/landing_page_hero.png");
 }
 
@@ -168,9 +171,7 @@ a {
 }
 
 .section-games .section-overlay {
-  background:
-    linear-gradient(0deg, rgba(187, 90, 43, 0.14), rgba(187, 90, 43, 0.14)),
-    var(--overlay-games);
+  background: linear-gradient(180deg, rgba(51, 38, 30, 0.82), rgba(51, 38, 30, 0.62));
 }
 
 .section-streams .section-backdrop {
@@ -204,10 +205,12 @@ a {
 }
 
 .hero-grid,
-.showcase-hero,
-.contact-grid {
+.contact-grid,
+.hero-panels,
+.feature-grid,
+.contact-cards {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-4);
 }
 
 .hero-grid {
@@ -216,15 +219,30 @@ a {
   min-height: calc(100vh - 5rem);
 }
 
+.hero-panels {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.section-shell {
+  display: grid;
+  gap: var(--space-5);
+}
+
 .eyebrow,
 .meta-line,
-.panel-label {
+.panel-label,
+.carousel-kicker {
   margin: 0 0 var(--space-2);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-accent-strong);
+}
+
+.eyebrow,
+.meta-line,
+.panel-label {
+  color: rgba(255, 218, 187, 0.92);
 }
 
 h1,
@@ -246,7 +264,7 @@ h2 {
 }
 
 h3 {
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
 }
 
 h4 {
@@ -258,50 +276,32 @@ p {
 }
 
 .hero-copy,
-.section-heading,
-.block-heading,
-.contact-card,
-.feature-card,
 .panel-card,
-.showcase-card {
+.image-card-copy,
+.feature-card,
+.contact-card,
+.section-heading,
+.carousel-caption {
   display: grid;
   gap: var(--space-3);
 }
 
-.hero-text,
-.section-heading p,
-.showcase-copy p,
-.block-heading p,
-.feature-card p,
-.contact-card p,
-.panel-card p {
-  color: var(--color-muted);
-}
-
 .section-hero .hero-copy,
 .section-hero .panel-card,
-.section-streams .section-heading,
-.section-games .section-heading,
-.section-mentoring .section-heading {
+.image-card,
+.carousel-caption {
   color: var(--color-image-text);
 }
 
-.section-hero .hero-text,
-.section-streams .section-heading p,
-.section-games .section-heading p,
-.section-mentoring .section-heading p {
+.panel-card p,
+.hero-copy p,
+.image-card-copy p,
+.carousel-caption p {
   color: var(--color-image-muted);
 }
 
-.section-with-backdrop .eyebrow,
-.section-with-backdrop .meta-line,
-.section-with-backdrop .panel-label {
-  color: rgba(255, 218, 187, 0.92);
-}
-
-.hero-actions,
 .tag-row,
-.contact-cards {
+.hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
@@ -328,91 +328,100 @@ p {
   background: rgba(255, 255, 255, 0.08);
 }
 
-.hero-panels,
-.feature-grid,
-.gallery-grid {
-  display: grid;
-  gap: var(--space-4);
-}
-
-.hero-panels {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 .panel-card,
-.showcase-card,
-.contact-card {
+.contact-card,
+.feature-card,
+.carousel-slide {
   padding: var(--space-5);
-  background: var(--color-surface-strong);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   box-shadow: var(--color-shadow);
 }
 
-.section-hero .panel-card {
+.panel-card {
   background: rgba(26, 19, 15, 0.5);
   border-color: rgba(255, 228, 200, 0.16);
   backdrop-filter: blur(10px);
 }
 
-.section-hero .panel-card p,
-.section-hero .panel-card a {
-  color: var(--color-image-muted);
-}
-
 .panel-card a {
   font-weight: 700;
-  color: var(--color-accent-strong);
+  color: var(--color-image-text);
 }
 
-.showcase-card {
-  gap: var(--space-6);
-  background: var(--color-surface-glass);
-  backdrop-filter: blur(10px);
-}
-
-.showcase-hero {
-  grid-template-columns: 1fr 0.9fr;
-  align-items: stretch;
-}
-
-.showcase-media,
-.placeholder-media,
-.video-frame {
-  min-height: 18rem;
-  border-radius: var(--radius-md);
-}
-
-.showcase-media {
+.image-card {
+  position: relative;
   overflow: hidden;
-  border: 1px solid rgba(214, 201, 182, 0.55);
-  background: rgba(255, 255, 255, 0.4);
+  min-height: 29rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 228, 200, 0.18);
+  box-shadow: var(--color-shadow);
 }
 
-.showcase-media img,
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.image-card-backdrop,
+.image-card-overlay,
+.image-card-content {
+  position: absolute;
+  inset: 0;
 }
 
-.placeholder-media {
+.image-card-backdrop {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
+
+.image-card-overlay {
+  background: linear-gradient(115deg, rgba(17, 12, 10, 0.82), rgba(17, 12, 10, 0.3));
+}
+
+.image-card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: stretch;
+  padding: var(--space-6);
+}
+
+.image-card-stack {
   display: grid;
-  place-items: center;
-  padding: var(--space-4);
-  text-align: center;
-  color: var(--color-muted);
-  background:
-    linear-gradient(135deg, rgba(187, 90, 43, 0.12), rgba(28, 26, 24, 0.04)),
-    repeating-linear-gradient(
-      -45deg,
-      rgba(255, 255, 255, 0.25),
-      rgba(255, 255, 255, 0.25) 12px,
-      rgba(255, 255, 255, 0.05) 12px,
-      rgba(255, 255, 255, 0.05) 24px
-    );
-  border: 1px dashed rgba(143, 61, 22, 0.35);
+  gap: var(--space-5);
+  width: 100%;
+  align-self: end;
+}
+
+.image-card-copy {
+  max-width: 36rem;
+}
+
+.game-logo-wrap {
+  display: flex;
+  align-items: center;
+  min-height: 5rem;
+}
+
+.game-logo {
+  display: block;
+  max-width: min(100%, 24rem);
+  max-height: 7rem;
+  object-fit: contain;
+}
+
+.image-card-game .image-card-backdrop {
+  background-image: url("assets/images/kingdom_of_krawall/hero/landing_page_hero.png");
+}
+
+.image-card-streams .image-card-backdrop {
+  background-image:
+    radial-gradient(circle at top right, rgba(255, 214, 153, 0.2), transparent 24%),
+    linear-gradient(135deg, rgba(79, 45, 35, 0.96), rgba(30, 26, 28, 0.92));
+}
+
+.image-card-mentoring .image-card-backdrop {
+  background-image:
+    radial-gradient(circle at top left, rgba(255, 229, 186, 0.18), transparent 20%),
+    linear-gradient(135deg, rgba(76, 59, 48, 0.96), rgba(40, 33, 31, 0.92));
 }
 
 .tag-row span {
@@ -421,9 +430,9 @@ p {
   min-height: 2.25rem;
   padding: 0 0.85rem;
   border-radius: 999px;
-  border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.46);
-  color: var(--color-muted);
+  border: 1px solid rgba(255, 234, 215, 0.2);
+  background: rgba(255, 249, 241, 0.14);
+  color: var(--color-image-text);
   font-size: 0.95rem;
 }
 
@@ -431,47 +440,122 @@ p {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.feature-card {
-  padding: var(--space-4);
-  background: rgba(255, 255, 255, 0.42);
-  border: 1px solid rgba(214, 201, 182, 0.8);
-  border-radius: var(--radius-sm);
+.feature-grid-on-card {
+  width: 100%;
 }
 
-.media-block {
+.feature-card,
+.contact-card {
+  background: var(--color-surface-soft);
+}
+
+.feature-card p,
+.contact-card p,
+.section-heading p {
+  color: var(--color-muted);
+}
+
+.media-carousel {
   display: grid;
   gap: var(--space-4);
+  width: 100%;
 }
 
-.video-frame {
+.carousel-header {
+  display: flex;
+  align-items: end;
+  gap: var(--space-4);
+  color: var(--color-image-text);
+}
+
+.carousel-button {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgba(255, 234, 215, 0.22);
+  border-radius: 999px;
+  color: var(--color-image-text);
+  background: rgba(255, 249, 241, 0.1);
+  cursor: pointer;
+}
+
+.carousel-viewport {
+  position: relative;
+  min-height: 0;
+  padding: 0 4.25rem;
+}
+
+.carousel-slide {
+  display: none;
+  gap: var(--space-4);
+  background: rgba(17, 12, 10, 0.4);
+  border-color: rgba(255, 228, 200, 0.16);
+  backdrop-filter: blur(10px);
+}
+
+.carousel-slide.is-active {
+  display: grid;
+}
+
+.carousel-button-left,
+.carousel-button-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.carousel-button-left {
+  left: 0;
+}
+
+.carousel-button-right {
+  right: 0;
+}
+
+.carousel-media {
   overflow: hidden;
   aspect-ratio: 16 / 9;
-  min-height: auto;
+  border-radius: var(--radius-md);
+  background: rgba(255, 249, 241, 0.08);
 }
 
-.video-frame iframe {
+.carousel-media img,
+.carousel-media iframe {
   width: 100%;
   height: 100%;
   border: 0;
+  object-fit: cover;
 }
 
-.gallery-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.carousel-kicker {
+  color: rgba(255, 218, 187, 0.92);
 }
 
-.gallery-item {
-  min-height: 14rem;
-  overflow: hidden;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(214, 201, 182, 0.8);
-  background: rgba(255, 255, 255, 0.42);
+.carousel-footer {
+  display: flex;
+  justify-content: center;
 }
 
-.gallery-item figcaption {
-  padding: 0.85rem 1rem;
-  font-size: 0.95rem;
-  color: var(--color-muted);
-  background: rgba(255, 249, 241, 0.92);
+.carousel-dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.carousel-dot {
+  width: 0.9rem;
+  height: 0.9rem;
+  padding: 0;
+  border: 1px solid rgba(255, 234, 215, 0.36);
+  border-radius: 999px;
+  background: rgba(255, 249, 241, 0.2);
+  cursor: pointer;
+}
+
+.carousel-dot.is-active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .contact-grid {
@@ -480,7 +564,6 @@ p {
 }
 
 .contact-cards {
-  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -496,12 +579,10 @@ p {
 
 @media (max-width: 900px) {
   .hero-grid,
-  .showcase-hero,
-  .contact-grid,
+  .hero-panels,
   .feature-grid,
-  .gallery-grid,
-  .contact-cards,
-  .hero-panels {
+  .contact-grid,
+  .contact-cards {
     grid-template-columns: 1fr;
   }
 
@@ -528,8 +609,13 @@ p {
     display: inline-flex;
   }
 
-  .section-backdrop {
+  .section-backdrop,
+  .image-card-backdrop {
     background-position: center top;
+  }
+
+  .carousel-header {
+    align-items: start;
   }
 }
 
@@ -549,8 +635,35 @@ p {
   }
 
   .panel-card,
-  .showcase-card,
-  .contact-card {
+  .feature-card,
+  .contact-card,
+  .carousel-slide {
     padding: var(--space-4);
+  }
+
+  .image-card {
+    min-height: 24rem;
+  }
+
+  .image-card-content {
+    padding: var(--space-4);
+  }
+
+  .carousel-viewport {
+    padding: 3.75rem 0 0;
+  }
+
+  .carousel-button-left,
+  .carousel-button-right {
+    top: 1.25rem;
+    transform: none;
+  }
+
+  .carousel-button-left {
+    left: 0;
+  }
+
+  .carousel-button-right {
+    right: 0;
   }
 }
