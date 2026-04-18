@@ -1,12 +1,18 @@
 :root {
-  --color-bg: #f6f1e8;
+  --color-bg: #efe7da;
   --color-surface: #fff9f1;
-  --color-surface-strong: #fffdf8;
+  --color-surface-strong: rgba(255, 252, 247, 0.92);
+  --color-surface-glass: rgba(255, 249, 241, 0.72);
   --color-text: #1c1a18;
   --color-muted: #5f584f;
-  --color-border: #d6c9b6;
+  --color-border: rgba(214, 201, 182, 0.85);
   --color-accent: #bb5a2b;
   --color-accent-strong: #8f3d16;
+  --color-image-text: #fff7ef;
+  --color-image-muted: rgba(255, 241, 229, 0.82);
+  --overlay-hero: linear-gradient(110deg, rgba(15, 11, 9, 0.84), rgba(15, 11, 9, 0.44));
+  --overlay-games: linear-gradient(180deg, rgba(18, 12, 9, 0.78), rgba(18, 12, 9, 0.58));
+  --overlay-mentoring: linear-gradient(135deg, rgba(24, 19, 16, 0.76), rgba(24, 19, 16, 0.4));
   --color-shadow: 0 18px 45px rgba(40, 27, 12, 0.12);
   --radius-sm: 14px;
   --radius-md: 24px;
@@ -64,8 +70,8 @@ a {
   top: 0;
   z-index: 20;
   backdrop-filter: blur(16px);
-  background: rgba(246, 241, 232, 0.85);
-  border-bottom: 1px solid rgba(214, 201, 182, 0.8);
+  background: rgba(239, 231, 218, 0.82);
+  border-bottom: 1px solid rgba(214, 201, 182, 0.66);
 }
 
 .header-inner,
@@ -121,8 +127,68 @@ a {
   padding: var(--space-8) 0;
 }
 
-.section-alt {
-  background: rgba(255, 253, 248, 0.65);
+.section-with-backdrop {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.section-with-backdrop > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.section-backdrop,
+.section-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.section-backdrop {
+  background-color: #2f241f;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
+
+.section-overlay {
+  z-index: 0;
+}
+
+.section-hero .section-backdrop,
+.section-games .section-backdrop {
+  background-image: url("assets/images/kingdom_of_krawall/hero/landing_page_hero.png");
+}
+
+.section-hero .section-overlay {
+  background:
+    radial-gradient(circle at top right, rgba(187, 90, 43, 0.26), transparent 28%),
+    var(--overlay-hero);
+}
+
+.section-games .section-overlay {
+  background:
+    linear-gradient(0deg, rgba(187, 90, 43, 0.14), rgba(187, 90, 43, 0.14)),
+    var(--overlay-games);
+}
+
+.section-mentoring .section-backdrop {
+  background-image:
+    radial-gradient(circle at top left, rgba(255, 221, 176, 0.14), transparent 24%),
+    linear-gradient(135deg, rgba(77, 57, 45, 0.96), rgba(39, 33, 31, 0.88));
+}
+
+.section-mentoring .section-overlay {
+  background: var(--overlay-mentoring);
+}
+
+.utility-section {
+  background: rgba(255, 252, 247, 0.78);
+}
+
+.utility-section-alt {
+  background: rgba(249, 242, 233, 0.88);
 }
 
 .hero-grid,
@@ -135,6 +201,7 @@ a {
 .hero-grid {
   grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
+  min-height: calc(100vh - 5rem);
 }
 
 .eyebrow,
@@ -199,6 +266,25 @@ p {
   color: var(--color-muted);
 }
 
+.section-hero .hero-copy,
+.section-hero .panel-card,
+.section-games .section-heading,
+.section-mentoring .section-heading {
+  color: var(--color-image-text);
+}
+
+.section-hero .hero-text,
+.section-games .section-heading p,
+.section-mentoring .section-heading p {
+  color: var(--color-image-muted);
+}
+
+.section-with-backdrop .eyebrow,
+.section-with-backdrop .meta-line,
+.section-with-backdrop .panel-label {
+  color: rgba(255, 218, 187, 0.92);
+}
+
 .hero-actions,
 .tag-row,
 .contact-cards {
@@ -223,8 +309,9 @@ p {
 }
 
 .button-secondary {
-  border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.55);
+  color: var(--color-image-text);
+  border: 1px solid rgba(255, 235, 218, 0.28);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .hero-panels,
@@ -242,10 +329,21 @@ p {
 .showcase-card,
 .contact-card {
   padding: var(--space-5);
-  background: rgba(255, 253, 248, 0.86);
-  border: 1px solid rgba(214, 201, 182, 0.85);
+  background: var(--color-surface-strong);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   box-shadow: var(--color-shadow);
+}
+
+.section-hero .panel-card {
+  background: rgba(26, 19, 15, 0.5);
+  border-color: rgba(255, 228, 200, 0.16);
+  backdrop-filter: blur(10px);
+}
+
+.section-hero .panel-card p,
+.section-hero .panel-card a {
+  color: var(--color-image-muted);
 }
 
 .panel-card a {
@@ -255,6 +353,8 @@ p {
 
 .showcase-card {
   gap: var(--space-6);
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(10px);
 }
 
 .showcase-hero {
@@ -271,8 +371,8 @@ p {
 
 .showcase-media {
   overflow: hidden;
-  border: 1px solid rgba(214, 201, 182, 0.8);
-  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(214, 201, 182, 0.55);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .showcase-media img,
@@ -308,7 +408,7 @@ p {
   padding: 0 0.85rem;
   border-radius: 999px;
   border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.46);
   color: var(--color-muted);
   font-size: 0.95rem;
 }
@@ -319,7 +419,7 @@ p {
 
 .feature-card {
   padding: var(--space-4);
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.42);
   border: 1px solid rgba(214, 201, 182, 0.8);
   border-radius: var(--radius-sm);
 }
@@ -350,7 +450,7 @@ p {
   overflow: hidden;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(214, 201, 182, 0.8);
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.42);
 }
 
 .gallery-item figcaption {
@@ -412,6 +512,10 @@ p {
 
   .nav-toggle {
     display: inline-flex;
+  }
+
+  .section-backdrop {
+    background-position: center top;
   }
 }
 
