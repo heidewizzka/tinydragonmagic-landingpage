@@ -143,7 +143,7 @@ button {
   isolation: isolate;
 }
 
-.section-with-backdrop > .container {
+.section-with-backdrop>.container {
   position: relative;
   z-index: 1;
 }
@@ -341,7 +341,9 @@ p {
 .panel-card,
 .contact-card,
 .feature-card,
-.carousel-slide {
+.carousel-slide,
+.carousel-media-card,
+.carousel-caption-card {
   padding: var(--space-5);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -423,7 +425,9 @@ p {
 }
 
 .image-card-game .image-card-backdrop {
-  background-image: url("assets/images/kingdom_of_krawall/hero/landing_page_hero.png");
+  background-image: url("assets/images/kingdom_of_krawall/hero/landing_page_card_background.png");
+  background-position: center center;
+  background-size: cover;
 }
 
 .image-card-game .image-card-overlay {
@@ -521,9 +525,9 @@ p {
   grid-area: 1 / 1;
   display: grid;
   gap: var(--space-4);
-  background: rgba(17, 12, 10, 0.4);
-  border-color: rgba(255, 228, 200, 0.16);
-  backdrop-filter: blur(10px);
+  padding: 0;
+  border: 0;
+  box-shadow: none;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -543,6 +547,21 @@ p {
     opacity 420ms ease,
     transform 420ms ease,
     visibility 0ms linear 0ms;
+}
+
+.carousel-media-card {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.carousel-caption-card {
+  background: rgba(17, 12, 10, 0.42);
+  border-color: rgba(255, 228, 200, 0.16);
+  backdrop-filter: blur(10px);
 }
 
 .carousel-button-left,
@@ -566,6 +585,7 @@ p {
   aspect-ratio: 16 / 9;
   border-radius: var(--radius-md);
   background: rgba(255, 249, 241, 0.08);
+  width: 100%;
 }
 
 .carousel-media img,
@@ -643,6 +663,7 @@ p {
 }
 
 @media (max-width: 900px) {
+
   .hero-grid,
   .hero-panels,
   .feature-grid,
@@ -685,6 +706,7 @@ p {
 }
 
 @media (max-width: 640px) {
+
   .hero-section,
   .content-section {
     padding: var(--space-7) 0;
@@ -702,7 +724,7 @@ p {
   .panel-card,
   .feature-card,
   .contact-card,
-  .carousel-slide {
+  .carousel-caption-card {
     padding: var(--space-4);
   }
 
