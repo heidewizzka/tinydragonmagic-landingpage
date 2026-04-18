@@ -269,6 +269,20 @@ p {
   border-radius: var(--radius-md);
 }
 
+.showcase-media {
+  overflow: hidden;
+  border: 1px solid rgba(214, 201, 182, 0.8);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.showcase-media img,
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .placeholder-media {
   display: grid;
   place-items: center;
@@ -333,11 +347,17 @@ p {
 
 .gallery-item {
   min-height: 14rem;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(214, 201, 182, 0.8);
+  background: rgba(255, 255, 255, 0.55);
 }
 
 .gallery-item figcaption {
+  padding: 0.85rem 1rem;
   font-size: 0.95rem;
   color: var(--color-muted);
+  background: rgba(255, 249, 241, 0.92);
 }
 
 .contact-grid {
