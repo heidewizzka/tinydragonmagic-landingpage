@@ -21,6 +21,8 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   const prevButton = carousel.querySelector("[data-carousel-prev]");
   const nextButton = carousel.querySelector("[data-carousel-next]");
   const dots = Array.from(carousel.querySelectorAll("[data-carousel-dot]"));
+  const autoAdvanceMs = 5000;
+  let timerId = null;
 
   if (!slides.length || !prevButton || !nextButton) {
     return;
@@ -32,6 +34,13 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
     slides[0].classList.add("is-active");
   }
 
+  const startTimer = () => {
+    window.clearTimeout(timerId);
+    timerId = window.setTimeout(() => {
+      render(activeIndex + 1);
+    }, autoAdvanceMs);
+  };
+
   const render = (nextIndex) => {
     slides[activeIndex].classList.remove("is-active");
     activeIndex = (nextIndex + slides.length) % slides.length;
@@ -41,6 +50,7 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
       dot.classList.toggle("is-active", isActive);
       dot.setAttribute("aria-selected", String(isActive));
     });
+    startTimer();
   };
 
   prevButton.addEventListener("click", () => {
@@ -56,4 +66,38 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
       render(index);
     });
   });
+
+  const iframe = carousel.querySelector("iframe");
+  if (iframe) {
+    const registerYoutubeEvents = () => {
+      iframe.contentWindow?.postMessage(
+        JSON.stringify({
+          event: "command",
+          func: "addEventListener",
+          args: ["onStateChange"],
+        }),
+        "*",
+      );
+    };
+
+    iframe.addEventListener("load", registerYoutubeEvents);
+    registerYoutubeEvents();
+
+    window.addEventListener("message", (event) => {
+      if (event.source !== iframe.contentWindow || typeof event.data !== "string") {
+        return;
+      }
+
+      try {
+        const data = JSON.parse(event.data);
+        if (data.event === "onStateChange" && data.info === 0) {
+          render(activeIndex + 1);
+        }
+      } catch {
+        // Ignore unrelated postMessage payloads.
+      }
+    });
+  }
+
+  startTimer();
 });

@@ -402,19 +402,23 @@ p {
 }
 
 .image-card-copy {
-  max-width: 36rem;
+  max-width: none;
+  width: 100%;
 }
 
 .game-logo-wrap {
   display: flex;
   align-items: center;
-  min-height: 5rem;
+  justify-content: center;
+  width: 100%;
+  min-height: 14rem;
 }
 
 .game-logo {
   display: block;
-  max-width: min(100%, 24rem);
-  max-height: 7rem;
+  width: 100%;
+  max-width: none;
+  max-height: 16rem;
   object-fit: contain;
 }
 
@@ -510,18 +514,35 @@ p {
   position: relative;
   min-height: 0;
   padding: 0 4.25rem;
+  display: grid;
 }
 
 .carousel-slide {
-  display: none;
+  grid-area: 1 / 1;
+  display: grid;
   gap: var(--space-4);
   background: rgba(17, 12, 10, 0.4);
   border-color: rgba(255, 228, 200, 0.16);
   backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition:
+    opacity 420ms ease,
+    transform 420ms ease,
+    visibility 0ms linear 420ms;
 }
 
 .carousel-slide.is-active {
-  display: grid;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition:
+    opacity 420ms ease,
+    transform 420ms ease,
+    visibility 0ms linear 0ms;
 }
 
 .carousel-button-left,
@@ -572,18 +593,34 @@ p {
 }
 
 .carousel-dot {
-  width: 0.9rem;
-  height: 0.9rem;
+  width: 5.25rem;
+  height: 3.25rem;
   padding: 0;
   border: 1px solid rgba(255, 234, 215, 0.36);
-  border-radius: 999px;
+  border-radius: 0.75rem;
   background: rgba(255, 249, 241, 0.2);
+  overflow: hidden;
   cursor: pointer;
+  opacity: 0.78;
+  transition:
+    transform 220ms ease,
+    opacity 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.carousel-dot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .carousel-dot.is-active {
-  background: var(--color-accent);
   border-color: var(--color-accent);
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 2px rgba(187, 90, 43, 0.22);
 }
 
 .contact-grid {
@@ -675,6 +712,15 @@ p {
 
   .image-card-content {
     padding: var(--space-4);
+  }
+
+  .game-logo-wrap {
+    min-height: 10rem;
+  }
+
+  .game-logo {
+    width: 100%;
+    max-height: 11rem;
   }
 
   .carousel-viewport {
