@@ -451,8 +451,8 @@ p {
 
 .panel-card-mentoring .panel-card-media {
   background-image:
-    radial-gradient(circle at top left, rgba(146, 204, 255, 0.24), transparent 24%),
-    linear-gradient(135deg, rgba(35, 68, 102, 0.98), rgba(22, 38, 58, 0.94));
+    linear-gradient(180deg, rgba(20, 18, 25, 0.16), rgba(20, 18, 25, 0.38)),
+    url("assets/images/mentoring/landing_page_hero_mentoring.png");
 }
 
 .panel-card-overlay {
@@ -754,13 +754,15 @@ p {
 
 .image-card-mentoring .image-card-backdrop {
   background-image:
-    radial-gradient(circle at top left, rgba(255, 229, 186, 0.18), transparent 20%),
-    linear-gradient(135deg, rgba(76, 59, 48, 0.96), rgba(40, 33, 31, 0.92));
+    linear-gradient(180deg, rgba(26, 21, 24, 0.12), rgba(26, 21, 24, 0.3)),
+    url("assets/images/mentoring/landing_page_hero_mentoring.png");
+  background-position: center center;
+  background-size: cover;
 }
 
 .image-card-mentoring .image-card-overlay {
   background:
-    linear-gradient(115deg, rgba(18, 27, 39, 0.82), rgba(18, 27, 39, 0.28)),
+    linear-gradient(115deg, rgba(19, 18, 24, 0.82), rgba(19, 18, 24, 0.24)),
     linear-gradient(0deg, var(--tint-mentoring), var(--tint-mentoring));
 }
 
