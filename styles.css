@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "Krawall SC";
+  src: url("assets/fonts/kingdom_of_krawall/AlegreyaSC-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Krawall Sans";
+  src: url("assets/fonts/kingdom_of_krawall/AlegreyaSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --color-bg: #efe7da;
   --color-surface-strong: rgba(255, 252, 247, 0.9);
@@ -34,6 +50,8 @@
   --space-8: 6rem;
   --font-display: "Trebuchet MS", "Segoe UI", sans-serif;
   --font-body: "Segoe UI", Arial, sans-serif;
+  --font-krawall-sc: "Krawall SC", "Trebuchet MS", "Segoe UI", sans-serif;
+  --font-krawall-sans: "Krawall Sans", "Segoe UI", Arial, sans-serif;
 }
 
 *,
@@ -556,6 +574,26 @@ p {
   background:
     linear-gradient(115deg, rgba(23, 14, 10, 0.84), rgba(23, 14, 10, 0.34)),
     linear-gradient(0deg, var(--tint-games), var(--tint-games));
+}
+
+.image-card-game .meta-line,
+.image-card-game .carousel-kicker,
+.image-card-game .tag-row span,
+.image-card-game .button {
+  font-family: var(--font-krawall-sc);
+}
+
+.image-card-game .image-card-copy>p,
+.image-card-game .carousel-caption h4 {
+  font-family: var(--font-krawall-sans);
+}
+
+.image-card-game .carousel-caption h4 {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 .image-card-streams .image-card-backdrop {
