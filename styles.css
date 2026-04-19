@@ -134,6 +134,100 @@ button {
   color: var(--color-muted);
 }
 
+.social-list {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-button {
+  position: relative;
+  display: inline-flex;
+  align-items: end;
+  justify-content: flex-start;
+  min-height: 12rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(255, 233, 214, 0.16);
+  border-radius: var(--radius-md);
+  background: rgba(255, 249, 241, 0.08);
+  color: var(--color-image-text);
+  box-shadow: 0 10px 24px rgba(12, 8, 7, 0.12);
+  overflow: hidden;
+  transform: translateY(0) scale(1);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease;
+}
+
+.social-button img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 0;
+}
+
+.social-button span {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.social-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.social-button-twitch::before {
+  background: rgba(118, 74, 188, 0.24);
+}
+
+.social-button-steam::before {
+  background: rgba(57, 91, 134, 0.24);
+}
+
+.social-button-discord::before {
+  background: rgba(88, 101, 242, 0.24);
+}
+
+.social-button-bluesky::before {
+  background: rgba(31, 139, 255, 0.24);
+}
+
+.social-button:hover,
+.social-button:focus-visible {
+  transform: translateY(-6px) scale(1.015);
+  border-color: rgba(255, 214, 176, 0.32);
+  box-shadow: 0 24px 50px rgba(24, 15, 10, 0.28);
+}
+
+.social-button-twitch:hover::before,
+.social-button-twitch:focus-visible::before {
+  background: rgba(118, 74, 188, 0.16);
+}
+
+.social-button-steam:hover::before,
+.social-button-steam:focus-visible::before {
+  background: rgba(57, 91, 134, 0.16);
+}
+
+.social-button-discord:hover::before,
+.social-button-discord:focus-visible::before {
+  background: rgba(88, 101, 242, 0.16);
+}
+
+.social-button-bluesky:hover::before,
+.social-button-bluesky:focus-visible::before {
+  background: rgba(31, 139, 255, 0.16);
+}
+
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -225,11 +319,27 @@ button {
 }
 
 .utility-section {
-  background: rgba(255, 252, 247, 0.78);
+  background: #2f241f;
 }
 
 .utility-section-alt {
-  background: rgba(249, 242, 233, 0.88);
+  background: #3a2b24;
+}
+
+.utility-section .section-heading,
+.utility-section-alt .section-heading {
+  color: var(--color-image-text);
+  text-align: center;
+  justify-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.utility-section .section-heading p,
+.utility-section-alt .section-heading p,
+.utility-section .social-list a,
+.utility-section-alt .social-list a {
+  color: var(--color-image-muted);
 }
 
 .hero-grid,
@@ -791,10 +901,96 @@ p {
   background: var(--color-surface-soft);
 }
 
+.contact-card {
+  position: relative;
+  overflow: hidden;
+  align-content: end;
+  justify-items: start;
+  min-height: 13.5rem;
+  transform: translateY(0) scale(1);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease;
+}
+
+.contact-card-link {
+  display: grid;
+}
+
+.contact-card-icon {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 0;
+}
+
+.contact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 12, 10, 0.42);
+  z-index: 1;
+}
+
+.contact-card-email::before {
+  background:
+    linear-gradient(180deg, rgba(135, 72, 40, 0.18), rgba(135, 72, 40, 0.4)),
+    rgba(17, 12, 10, 0.28);
+}
+
+.contact-card-discord::before {
+  background:
+    linear-gradient(180deg, rgba(78, 101, 196, 0.18), rgba(78, 101, 196, 0.4)),
+    rgba(17, 12, 10, 0.28);
+}
+
+.contact-card h3,
+.contact-card p {
+  position: relative;
+  z-index: 2;
+  color: var(--color-image-text);
+}
+
+.contact-card:hover,
+.contact-card:focus-within {
+  transform: translateY(-6px) scale(1.015);
+  border-color: rgba(187, 90, 43, 0.34);
+  background: rgba(255, 249, 241, 0.92);
+  box-shadow: 0 24px 50px rgba(40, 27, 12, 0.16);
+}
+
+.contact-card:hover::before,
+.contact-card:focus-within::before {
+  background: rgba(17, 12, 10, 0.32);
+}
+
+.contact-card-email:hover::before,
+.contact-card-email:focus-within::before {
+  background:
+    linear-gradient(180deg, rgba(135, 72, 40, 0.12), rgba(135, 72, 40, 0.32)),
+    rgba(17, 12, 10, 0.2);
+}
+
+.contact-card-discord:hover::before,
+.contact-card-discord:focus-within::before {
+  background:
+    linear-gradient(180deg, rgba(78, 101, 196, 0.12), rgba(78, 101, 196, 0.32)),
+    rgba(17, 12, 10, 0.2);
+}
+
 .feature-card p,
 .contact-card p,
 .section-heading p {
   color: var(--color-muted);
+}
+
+.contact-card p {
+  color: var(--color-image-muted);
 }
 
 .media-carousel {
@@ -989,12 +1185,13 @@ p {
 }
 
 .contact-grid {
-  grid-template-columns: 0.9fr 1.1fr;
-  align-items: start;
+  grid-template-columns: 1fr;
+  justify-items: center;
 }
 
 .contact-cards {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(100%, 42rem);
 }
 
 .compact {

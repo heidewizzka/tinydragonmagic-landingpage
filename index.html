@@ -432,20 +432,19 @@
       <div class="container contact-grid">
         <div class="section-heading compact">
           <p class="eyebrow">Contact</p>
-          <h2>Start a conversation</h2>
-          <p>
-            Keep this area ready for final contact details. E-mail is the primary channel and Discord is
-            the secondary option.
-          </p>
         </div>
         <div class="contact-cards">
-          <article class="contact-card">
+          <a class="contact-card contact-card-link contact-card-email" href="mailto:contact@tinydragonmagic.at"
+            aria-label="Send an e-mail to contact@tinydragonmagic.at">
+            <img class="contact-card-icon" src="assets/icons/ui/landing_page_button_email.png" alt="" aria-hidden="true">
             <h3>E-mail</h3>
-            <p>primary-contact@example.com</p>
-          </article>
-          <article class="contact-card">
+            <p>contact@tinydragonmagic.at</p>
+          </a>
+          <article class="contact-card contact-card-discord">
+            <img class="contact-card-icon" src="assets/icons/ui/landing_page_button_discord.png" alt=""
+              aria-hidden="true">
             <h3>Discord</h3>
-            <p>discord-handle-placeholder</p>
+            <p>martin.onfire</p>
           </article>
         </div>
       </div>
@@ -455,13 +454,30 @@
       <div class="container">
         <div class="section-heading compact">
           <p class="eyebrow">Socials</p>
-          <h2>Follow the studio</h2>
         </div>
         <div class="social-list" aria-label="Social links">
-          <a href="/" aria-disabled="true">YouTube</a>
-          <a href="/" aria-disabled="true">Discord</a>
-          <a href="/" aria-disabled="true">Itch.io</a>
-          <a href="/" aria-disabled="true">LinkedIn</a>
+          <a class="social-button social-button-bluesky"
+            href="https://bsky.app/profile/heidew1zzka.bsky.social" target="_blank" rel="noreferrer"
+            aria-label="Follow on Bluesky">
+            <img src="assets/icons/ui/landing_page_follow_bluesky.png" alt="" aria-hidden="true">
+            <span>Bluesky</span>
+          </a>
+          <a class="social-button social-button-discord" href="https://discord.gg/njJ2rNRCxU" target="_blank"
+            rel="noreferrer" aria-label="Join the Discord server">
+            <img src="assets/icons/ui/landing_page_follow_discord.png" alt="" aria-hidden="true">
+            <span>Discord</span>
+          </a>
+          <a class="social-button social-button-twitch" href="https://www.twitch.tv/heidew1zzka" target="_blank"
+            rel="noreferrer" aria-label="Follow on Twitch">
+            <img src="assets/icons/ui/landing_page_follow_twitch.png" alt="" aria-hidden="true">
+            <span>Twitch</span>
+          </a>
+          <a class="social-button social-button-steam"
+            href="https://store.steampowered.com/app/4502550/?snr=1_5_9__205" target="_blank" rel="noreferrer"
+            aria-label="Follow on Steam">
+            <img src="assets/icons/ui/landing_page_follow_steam.png" alt="" aria-hidden="true">
+            <span>Steam</span>
+          </a>
         </div>
       </div>
     </section>
