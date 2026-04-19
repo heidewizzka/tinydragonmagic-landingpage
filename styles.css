@@ -431,8 +431,8 @@ p {
 
 .panel-card-streams .panel-card-media {
   background-image:
-    radial-gradient(circle at top right, rgba(199, 138, 255, 0.28), transparent 24%),
-    linear-gradient(135deg, rgba(74, 43, 110, 0.98), rgba(32, 23, 50, 0.94));
+    linear-gradient(180deg, rgba(23, 12, 27, 0.16), rgba(23, 12, 27, 0.38)),
+    url("assets/images/twitch/landing_page_hero_twitch.png");
 }
 
 .panel-card-mentoring .panel-card-media {
@@ -548,6 +548,35 @@ p {
   justify-content: center;
 }
 
+.section-streams .image-card-copy {
+  justify-items: center;
+  text-align: center;
+}
+
+.section-streams .image-card-copy .meta-line {
+  justify-self: start;
+  text-align: left;
+}
+
+.section-streams .image-card-copy>p,
+.section-streams .image-card-copy>h2,
+.section-streams .tag-row {
+  width: min(100%, 44rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-streams .tag-row,
+.section-streams .hero-actions {
+  justify-content: center;
+}
+
+.section-streams .feature-grid-on-card {
+  width: min(100%, 44rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .game-logo-wrap {
   display: flex;
   align-items: center;
@@ -598,13 +627,15 @@ p {
 
 .image-card-streams .image-card-backdrop {
   background-image:
-    radial-gradient(circle at top right, rgba(255, 214, 153, 0.2), transparent 24%),
-    linear-gradient(135deg, rgba(79, 45, 35, 0.96), rgba(30, 26, 28, 0.92));
+    linear-gradient(180deg, rgba(24, 14, 27, 0.14), rgba(24, 14, 27, 0.32)),
+    url("assets/images/twitch/landing_page_hero_twitch.png");
+  background-position: center center;
+  background-size: cover;
 }
 
 .image-card-streams .image-card-overlay {
   background:
-    linear-gradient(115deg, rgba(24, 17, 31, 0.84), rgba(24, 17, 31, 0.3)),
+    linear-gradient(115deg, rgba(18, 12, 20, 0.82), rgba(18, 12, 20, 0.26)),
     linear-gradient(0deg, var(--tint-streams), var(--tint-streams));
 }
 
@@ -954,6 +985,9 @@ p {
 
   .section-games .image-card-copy>p,
   .section-games .tag-row,
+  .section-streams .image-card-copy>p,
+  .section-streams .image-card-copy>h2,
+  .section-streams .tag-row,
   .section-games .carousel-caption-card {
     width: 100%;
   }
