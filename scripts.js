@@ -101,3 +101,68 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
 
   startTimer();
 });
+
+const copyToast = document.querySelector(".copy-toast");
+let copyToastTimerId = null;
+
+const showCopyToast = (message) => {
+  if (!copyToast) {
+    return;
+  }
+
+  copyToast.textContent = message;
+  copyToast.classList.add("is-visible");
+  window.clearTimeout(copyToastTimerId);
+  copyToastTimerId = window.setTimeout(() => {
+    copyToast.classList.remove("is-visible");
+  }, 1800);
+};
+
+const copyText = async (text) => {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(text);
+    return true;
+  }
+
+  const helper = document.createElement("textarea");
+  helper.value = text;
+  helper.setAttribute("readonly", "");
+  helper.style.position = "absolute";
+  helper.style.left = "-9999px";
+  document.body.append(helper);
+  helper.select();
+
+  try {
+    return document.execCommand("copy");
+  } finally {
+    helper.remove();
+  }
+};
+
+document.querySelectorAll("[data-copy-text]").forEach((element) => {
+  element.addEventListener("click", async (event) => {
+    const preservesLink =
+      element.matches("a[href^='mailto:']") ||
+      element.matches("a[href^='https://discord.gg']");
+
+    if (!preservesLink) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    const value = element.getAttribute("data-copy-text");
+    if (!value) {
+      return;
+    }
+
+    const successMessage = element.getAttribute("data-copy-success") || "Copied to clipboard";
+    const errorMessage = element.getAttribute("data-copy-error") || "Could not copy";
+
+    try {
+      const copied = await copyText(value);
+      showCopyToast(copied ? successMessage : errorMessage);
+    } catch {
+      showCopyToast(errorMessage);
+    }
+  });
+});

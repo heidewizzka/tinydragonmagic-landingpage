@@ -385,7 +385,8 @@
                 <p class="meta-line">1:1 support • Mentoring • Production clarity</p>
                 <h2>"Get Out of the Swamp" Mentoring</h2>
                 <p>
-                  You are a game developer with a 2+ year development plan, keep restarting projects over and over, or are
+                  You are a game developer with a 2+ year development plan, keep restarting projects over and over, or
+                  are
                   simply stuck?
                   Then this mentoring program is for you.
                   Together, we focus on sanitizing your project, improving your
@@ -394,10 +395,13 @@
                 <div class="tag-row" aria-label="Mentoring highlights">
                 </div>
                 <div class="hero-actions">
-                  <a class="mentoring-avatar-wrap" href="#contact" aria-label="Start a conversation">
+                  <a class="mentoring-avatar-wrap" href="mailto:contact@tinydragonmagic.at"
+                    data-copy-text="contact@tinydragonmagic.at" data-copy-success="E-mail copied to clipboard"
+                    aria-label="Start a conversation by e-mail">
                     <img class="mentoring-avatar" src="assets/images/mentoring/mentoring_martin.png" alt="">
                   </a>
-                  <a class="button button-primary" href="#contact">
+                  <a class="button button-primary" href="mailto:contact@tinydragonmagic.at"
+                    data-copy-text="contact@tinydragonmagic.at" data-copy-success="E-mail copied to clipboard">
                     Start a Conversation
                   </a>
                 </div>
@@ -435,17 +439,24 @@
         </div>
         <div class="contact-cards">
           <a class="contact-card contact-card-link contact-card-email" href="mailto:contact@tinydragonmagic.at"
+            data-copy-text="contact@tinydragonmagic.at" data-copy-success="E-mail copied to clipboard"
             aria-label="Send an e-mail to contact@tinydragonmagic.at">
-            <img class="contact-card-icon" src="assets/icons/ui/landing_page_button_email.png" alt="" aria-hidden="true">
-            <h3>E-mail</h3>
-            <p>contact@tinydragonmagic.at</p>
+            <img class="contact-card-icon" src="assets/icons/ui/landing_page_button_email.png" alt=""
+              aria-hidden="true">
+            <h3>Send an E-Mail</h3>
+            <p class="contact-copy-trigger" data-copy-text="contact@tinydragonmagic.at"
+              data-copy-success="E-mail copied to clipboard" aria-label="Copy e-mail address">contact@tinydragonmagic.at
+            </p>
           </a>
-          <article class="contact-card contact-card-discord">
+          <a class="contact-card contact-card-link contact-card-discord" href="https://discord.gg/njJ2rNRCxU"
+            target="_blank" rel="noreferrer" data-copy-text="martin.onfire"
+            data-copy-success="Discord handle copied to clipboard" aria-label="Join the Discord server">
             <img class="contact-card-icon" src="assets/icons/ui/landing_page_button_discord.png" alt=""
               aria-hidden="true">
-            <h3>Discord</h3>
-            <p>martin.onfire</p>
-          </article>
+            <h3>Join on Discord</h3>
+            <p class="contact-copy-trigger" data-copy-text="martin.onfire"
+              data-copy-success="Discord handle copied to clipboard" aria-label="Copy Discord handle">martin.onfire</p>
+          </a>
         </div>
       </div>
     </section>
@@ -456,25 +467,18 @@
           <p class="eyebrow">Socials</p>
         </div>
         <div class="social-list" aria-label="Social links">
-          <a class="social-button social-button-bluesky"
-            href="https://bsky.app/profile/heidew1zzka.bsky.social" target="_blank" rel="noreferrer"
-            aria-label="Follow on Bluesky">
+          <a class="social-button social-button-bluesky" href="https://bsky.app/profile/heidew1zzka.bsky.social"
+            target="_blank" rel="noreferrer" aria-label="Follow on Bluesky">
             <img src="assets/icons/ui/landing_page_follow_bluesky.png" alt="" aria-hidden="true">
             <span>Bluesky</span>
-          </a>
-          <a class="social-button social-button-discord" href="https://discord.gg/njJ2rNRCxU" target="_blank"
-            rel="noreferrer" aria-label="Join the Discord server">
-            <img src="assets/icons/ui/landing_page_follow_discord.png" alt="" aria-hidden="true">
-            <span>Discord</span>
           </a>
           <a class="social-button social-button-twitch" href="https://www.twitch.tv/heidew1zzka" target="_blank"
             rel="noreferrer" aria-label="Follow on Twitch">
             <img src="assets/icons/ui/landing_page_follow_twitch.png" alt="" aria-hidden="true">
             <span>Twitch</span>
           </a>
-          <a class="social-button social-button-steam"
-            href="https://store.steampowered.com/app/4502550/?snr=1_5_9__205" target="_blank" rel="noreferrer"
-            aria-label="Follow on Steam">
+          <a class="social-button social-button-steam" href="https://store.steampowered.com/app/4502550/?snr=1_5_9__205"
+            target="_blank" rel="noreferrer" aria-label="Follow on Steam">
             <img src="assets/icons/ui/landing_page_follow_steam.png" alt="" aria-hidden="true">
             <span>Steam</span>
           </a>
@@ -495,6 +499,7 @@
     </div>
   </footer>
 
+  <div class="copy-toast" role="status" aria-live="polite">E-mail copied to clipboard</div>
   <script src="scripts.js"></script>
 </body>
 
