@@ -113,11 +113,30 @@ button {
 
 .brand,
 .site-footer p {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-logo {
+  width: 2.4rem;
+  height: 2.4rem;
+  object-fit: contain;
+  display: block;
+}
+
+.brand-title {
+  height: 3.4rem;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.hero-brand-title {
+  height: clamp(2rem, 5vw, 3rem);
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .site-nav,
@@ -352,6 +371,7 @@ button {
 }
 
 .hero-grid {
+  position: relative;
   grid-template-columns: 1fr;
   align-items: start;
   min-height: calc(100vh - 5rem);
@@ -1299,6 +1319,19 @@ p {
   .header-inner,
   .footer-inner {
     flex-wrap: wrap;
+  }
+
+  .brand-title {
+    height: 2.4rem;
+  }
+
+  .hero-corner-title {
+    width: 7.5rem;
+  }
+
+  .hero-corner-logo {
+    width: 7.5rem;
+    height: 7.5rem;
   }
 
   h1 {
