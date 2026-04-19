@@ -153,6 +153,14 @@ button {
   color: var(--color-muted);
 }
 
+.site-nav a,
+.site-footer a {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
 .social-list {
   flex-wrap: wrap;
   justify-content: center;
@@ -373,12 +381,15 @@ button {
 .hero-grid {
   position: relative;
   grid-template-columns: 1fr;
-  align-items: start;
+  align-items: center;
   min-height: calc(100vh - 5rem);
 }
 
 .hero-copy {
   max-width: 44rem;
+  justify-items: center;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .hero-panels {
@@ -415,8 +426,8 @@ h4 {
 }
 
 h1 {
-  font-size: clamp(2.8rem, 8vw, 5.5rem);
-  max-width: 12ch;
+  font-size: clamp(4rem, 11vw, 7.5rem);
+  max-width: none;
 }
 
 h2 {
@@ -1343,7 +1354,8 @@ p {
   }
 
   h1 {
-    max-width: 10ch;
+    font-size: clamp(3.2rem, 12vw, 5rem);
+    max-width: none;
   }
 
   .panel-card,
