@@ -21,7 +21,7 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   const prevButton = carousel.querySelector("[data-carousel-prev]");
   const nextButton = carousel.querySelector("[data-carousel-next]");
   const dots = Array.from(carousel.querySelectorAll("[data-carousel-dot]"));
-  const autoAdvanceMs = 5000;
+  const autoAdvanceMs = 10000;
   let timerId = null;
 
   if (!slides.length || !prevButton || !nextButton) {
