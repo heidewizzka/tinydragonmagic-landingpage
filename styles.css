@@ -451,7 +451,7 @@ p {
 
 .panel-card-mentoring .panel-card-media {
   background-image:
-    linear-gradient(180deg, rgba(20, 18, 25, 0.16), rgba(20, 18, 25, 0.38)),
+    linear-gradient(180deg, rgba(20, 18, 25, 0.04), rgba(20, 18, 25, 0.16)),
     url("assets/images/mentoring/landing_page_hero_mentoring.png");
 }
 
