@@ -48,7 +48,7 @@
   --space-6: 3rem;
   --space-7: 4rem;
   --space-8: 6rem;
-  --font-display: "Trebuchet MS", "Segoe UI", sans-serif;
+  --font-display: "Krawall SC", "Trebuchet MS", "Segoe UI", sans-serif;
   --font-body: "Segoe UI", Arial, sans-serif;
   --font-krawall-sc: "Krawall SC", "Trebuchet MS", "Segoe UI", sans-serif;
   --font-krawall-sans: "Krawall Sans", "Segoe UI", Arial, sans-serif;
@@ -857,7 +857,7 @@ p {
 
 .image-card-game .image-card-copy>p,
 .image-card-game .carousel-caption h4 {
-  font-family: var(--font-krawall-sans);
+  font-family: var(--font-body);
 }
 
 .image-card-game .carousel-caption h4 {
@@ -919,6 +919,14 @@ p {
 .feature-card,
 .contact-card {
   background: var(--color-surface-soft);
+}
+
+.section-streams .feature-card h4 {
+  color: #2f1f3f;
+}
+
+.section-mentoring .feature-card h4 {
+  color: #23384d;
 }
 
 .contact-card {
