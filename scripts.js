@@ -16,6 +16,25 @@ if (navToggle && siteNav) {
   });
 }
 
+document.querySelectorAll('a.brand[href="index.html#top"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const targetUrl = new URL(link.href);
+    const isSamePage =
+      targetUrl.pathname === window.location.pathname ||
+      window.location.pathname.endsWith("/index.html");
+
+    if (!isSamePage) {
+      return;
+    }
+
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+});
+
 let youtubeApiPromise = null;
 
 const loadYoutubeApi = () => {

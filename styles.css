@@ -1,4 +1,12 @@
 @font-face {
+  font-family: "Vina Sans";
+  src: url("assets/fonts/VinaSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Krawall SC";
   src: url("assets/fonts/kingdom_of_krawall/AlegreyaSC-Regular.ttf") format("truetype");
   font-weight: 400;
@@ -48,7 +56,7 @@
   --space-6: 3rem;
   --space-7: 4rem;
   --space-8: 6rem;
-  --font-display: "Krawall SC", "Trebuchet MS", "Segoe UI", sans-serif;
+  --font-display: "Vina Sans", "Impact", "Arial Black", sans-serif;
   --font-body: "Segoe UI", Arial, sans-serif;
   --font-krawall-sc: "Krawall SC", "Trebuchet MS", "Segoe UI", sans-serif;
   --font-krawall-sans: "Krawall Sans", "Segoe UI", Arial, sans-serif;
@@ -115,7 +123,7 @@ button {
 .site-footer p {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.00rem;
 }
 
 .brand-logo {
@@ -126,8 +134,8 @@ button {
 }
 
 .brand-title {
-  height: 3.4rem;
-  width: auto;
+  width: clamp(11rem, 22vw, 15rem);
+  height: auto;
   object-fit: contain;
   display: block;
 }
@@ -156,9 +164,10 @@ button {
 .site-nav a,
 .site-footer a {
   font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+  font-weight: 400;
   letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .social-list {
@@ -168,10 +177,10 @@ button {
 
 .social-button {
   position: relative;
-  display: inline-flex;
-  align-items: end;
-  justify-content: flex-start;
-  min-height: 12rem;
+  display: grid;
+  place-items: center;
+  width: min(100%, 10.5rem);
+  aspect-ratio: 5 / 7;
   padding: 1rem 1.15rem;
   border: 1px solid rgba(255, 233, 214, 0.16);
   border-radius: var(--radius-md);
@@ -201,8 +210,26 @@ button {
   position: relative;
   z-index: 2;
   font-family: var(--font-display);
-  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.1;
   letter-spacing: 0.02em;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.35);
+}
+
+.social-button-bluesky span {
+  color: #07356a;
+}
+
+.social-button-twitch span {
+  color: #fff7ff;
+  text-shadow: 0 2px 12px rgba(35, 12, 62, 0.64);
+}
+
+.social-button-steam span {
+  color: #071b31;
 }
 
 .social-button::before {
@@ -414,6 +441,7 @@ button {
 .eyebrow,
 .meta-line {
   color: rgba(255, 218, 187, 0.92);
+  text-align: center;
 }
 
 h1,
@@ -422,12 +450,25 @@ h3,
 h4 {
   margin: 0;
   font-family: var(--font-display);
+  font-weight: 400;
   line-height: 1.1;
+  text-transform: uppercase;
 }
 
 h1 {
   font-size: clamp(4rem, 11vw, 7.5rem);
   max-width: none;
+}
+
+.hero-title {
+  display: grid;
+  gap: 0.04em;
+  font-size: clamp(5.6rem, 14vw, 11rem);
+  line-height: 0.82;
+}
+
+.hero-title span {
+  display: block;
 }
 
 h2 {
@@ -468,6 +509,16 @@ p {
 .image-card-copy p,
 .carousel-caption p {
   color: var(--color-image-muted);
+  font-size: clamp(1.08rem, 1.7vw, 1.22rem);
+  line-height: 1.68;
+}
+
+.feature-card p,
+.contact-card p,
+.section-heading p,
+.legal-card p {
+  font-size: 1.08rem;
+  line-height: 1.68;
 }
 
 .tag-row,
@@ -619,10 +670,12 @@ p {
   box-shadow: 0 10px 24px rgba(12, 8, 7, 0.22);
   backdrop-filter: blur(8px);
   font-family: var(--font-display);
+  font-weight: 400;
   font-size: clamp(1.15rem, 2vw, 1.55rem);
   line-height: 1.02;
   text-align: center;
   color: var(--color-image-text);
+  text-transform: uppercase;
   text-wrap: balance;
 }
 
@@ -703,14 +756,18 @@ p {
   justify-content: center;
 }
 
+.section-games .image-card-copy .meta-line {
+  color: rgba(199, 164, 110, 0.68);
+}
+
 .section-streams .image-card-copy {
   justify-items: center;
   text-align: center;
 }
 
 .section-streams .image-card-copy .meta-line {
-  justify-self: start;
-  text-align: left;
+  color: rgba(196, 168, 226, 0.68);
+  justify-self: center;
 }
 
 .section-streams .image-card-copy>p,
@@ -759,6 +816,14 @@ p {
 .section-streams .hero-actions .button-primary {
   position: relative;
   z-index: 1;
+  background: #6d4aa2;
+  box-shadow: 0 10px 24px rgba(62, 36, 100, 0.28);
+}
+
+.section-streams .hero-actions .button-primary:hover,
+.section-streams .hero-actions .button-primary:focus-visible {
+  background: #7d57b7;
+  box-shadow: 0 24px 50px rgba(62, 36, 100, 0.34);
 }
 
 .section-streams .feature-grid-on-card {
@@ -773,8 +838,8 @@ p {
 }
 
 .section-mentoring .image-card-copy .meta-line {
-  justify-self: start;
-  text-align: left;
+  color: rgba(161, 193, 225, 0.68);
+  justify-self: center;
 }
 
 .section-mentoring .image-card-copy>p,
@@ -823,6 +888,14 @@ p {
 .section-mentoring .hero-actions .button-primary {
   position: relative;
   z-index: 1;
+  background: #3f6f9f;
+  box-shadow: 0 10px 24px rgba(31, 70, 108, 0.28);
+}
+
+.section-mentoring .hero-actions .button-primary:hover,
+.section-mentoring .hero-actions .button-primary:focus-visible {
+  background: #4d82b8;
+  box-shadow: 0 24px 50px rgba(31, 70, 108, 0.34);
 }
 
 .section-mentoring .feature-grid-on-card {
@@ -872,7 +945,7 @@ p {
 }
 
 .image-card-game .carousel-caption h4 {
-  font-size: 1rem;
+  font-size: 1.08rem;
   font-weight: 400;
   line-height: 1.6;
   text-transform: none;
@@ -916,7 +989,7 @@ p {
   border: 1px solid rgba(255, 234, 215, 0.2);
   background: rgba(255, 249, 241, 0.14);
   color: var(--color-image-text);
-  font-size: 0.95rem;
+  font-size: 1.02rem;
 }
 
 .feature-grid {
@@ -932,6 +1005,11 @@ p {
   background: var(--color-surface-soft);
 }
 
+.feature-card h4 {
+  font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+  line-height: 1;
+}
+
 .section-streams .feature-card h4 {
   color: #2f1f3f;
 }
@@ -943,9 +1021,10 @@ p {
 .contact-card {
   position: relative;
   overflow: hidden;
-  align-content: end;
-  justify-items: start;
-  min-height: 13.5rem;
+  place-items: center;
+  text-align: center;
+  aspect-ratio: 5 / 7;
+  min-height: 0;
   transform: translateY(0) scale(1);
   transition:
     transform 220ms ease,
@@ -993,6 +1072,26 @@ p {
   position: relative;
   z-index: 2;
   color: var(--color-image-text);
+  width: 100%;
+}
+
+.contact-card h3 {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0 var(--space-3);
+  transform: translateY(-50%);
+}
+
+.contact-card p {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: var(--space-5);
+  text-align: center;
+  padding: 0 var(--space-3);
 }
 
 .contact-card:hover,
@@ -1200,6 +1299,7 @@ p {
 
 .carousel-kicker {
   color: rgba(255, 218, 187, 0.92);
+  text-align: center;
 }
 
 .carousel-footer {
@@ -1263,8 +1363,9 @@ p {
 }
 
 .contact-cards {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  width: min(100%, 42rem);
+  grid-template-columns: repeat(2, minmax(0, 16rem));
+  justify-content: center;
+  width: min(100%, 35rem);
 }
 
 .compact {
@@ -1346,7 +1447,7 @@ p {
   }
 
   .brand-title {
-    height: 2.4rem;
+    width: clamp(8.5rem, 44vw, 11rem);
   }
 
   .hero-corner-title {
@@ -1361,6 +1462,10 @@ p {
   h1 {
     font-size: clamp(3.2rem, 12vw, 5rem);
     max-width: none;
+  }
+
+  .hero-title {
+    font-size: clamp(4.2rem, 20vw, 7rem);
   }
 
   .panel-card,
