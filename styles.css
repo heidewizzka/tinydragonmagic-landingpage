@@ -1410,20 +1410,24 @@ p {
   }
 
   .carousel-viewport {
-    padding: 0 3.5rem;
+    padding: 0 0.35rem;
   }
 
   .carousel-button-left,
   .carousel-button-right {
-    top: 50%;
+    top: calc((100vw - 3.5rem) * 0.26875);
     transform: translateY(-50%);
+    width: 2.85rem;
+    height: 2.85rem;
+    background: rgba(24, 16, 12, 0.56);
+    box-shadow: 0 10px 24px rgba(12, 8, 7, 0.24);
   }
 
   .carousel-button-left {
-    left: 0;
+    left: 0.65rem;
   }
 
   .carousel-button-right {
-    right: 0;
+    right: 0.65rem;
   }
 }
