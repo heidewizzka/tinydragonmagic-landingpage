@@ -513,6 +513,11 @@ p {
   line-height: 1.68;
 }
 
+.image-card-description {
+  display: grid;
+  gap: var(--space-3);
+}
+
 .feature-card p,
 .contact-card p,
 .section-heading p,
@@ -526,6 +531,10 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
+}
+
+.tag-row:empty {
+  display: none;
 }
 
 .button {
@@ -701,7 +710,7 @@ p {
 .image-card {
   position: relative;
   overflow: hidden;
-  min-height: 29rem;
+  min-height: clamp(36rem, calc(min(100vw - 2rem, var(--container-width)) * 1.4), 72rem);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 228, 200, 0.18);
   box-shadow: var(--color-shadow);
@@ -762,8 +771,18 @@ p {
 }
 
 .section-streams .image-card-copy {
+  align-content: start;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto minmax(0, 1fr);
   justify-items: center;
+  min-height: 100%;
   text-align: center;
+}
+
+.section-streams .image-card-stack {
+  align-self: stretch;
+  grid-template-rows: minmax(0, 1fr) auto;
+  min-height: 100%;
 }
 
 .section-streams .image-card-copy .meta-line {
@@ -772,6 +791,7 @@ p {
 }
 
 .section-streams .image-card-copy>p,
+.section-streams .image-card-description,
 .section-streams .image-card-copy>h2,
 .section-streams .tag-row {
   width: min(100%, 44rem);
@@ -784,10 +804,15 @@ p {
   justify-content: center;
 }
 
+.section-streams .image-card-description {
+  align-self: center;
+}
+
 .section-streams .hero-actions {
   position: relative;
   align-items: center;
   flex-direction: column;
+  align-self: center;
   gap: 0;
   padding-top: 1rem;
 }
@@ -828,14 +853,25 @@ p {
 }
 
 .section-streams .feature-grid-on-card {
+  align-self: end;
   width: min(100%, 44rem);
   margin-left: auto;
   margin-right: auto;
 }
 
 .section-mentoring .image-card-copy {
+  align-content: start;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto minmax(0, 1fr);
   justify-items: center;
+  min-height: 100%;
   text-align: center;
+}
+
+.section-mentoring .image-card-stack {
+  align-self: stretch;
+  grid-template-rows: minmax(0, 1fr) auto;
+  min-height: 100%;
 }
 
 .section-mentoring .image-card-copy .meta-line {
@@ -844,6 +880,7 @@ p {
 }
 
 .section-mentoring .image-card-copy>p,
+.section-mentoring .image-card-description,
 .section-mentoring .image-card-copy>h2,
 .section-mentoring .tag-row {
   width: min(100%, 44rem);
@@ -856,10 +893,15 @@ p {
   justify-content: center;
 }
 
+.section-mentoring .image-card-description {
+  align-self: center;
+}
+
 .section-mentoring .hero-actions {
   position: relative;
   align-items: center;
   flex-direction: column;
+  align-self: center;
   gap: 0;
   padding-top: 1rem;
 }
@@ -900,6 +942,7 @@ p {
 }
 
 .section-mentoring .feature-grid-on-card {
+  align-self: end;
   width: min(100%, 44rem);
   margin-left: auto;
   margin-right: auto;
@@ -1477,7 +1520,7 @@ p {
   }
 
   .image-card {
-    min-height: 24rem;
+    min-height: clamp(30rem, calc((100vw - 2rem) * 1.4), 48rem);
   }
 
   .image-card-content {
