@@ -23,6 +23,8 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   const dots = Array.from(carousel.querySelectorAll("[data-carousel-dot]"));
   const autoAdvanceMs = 10000;
   let timerId = null;
+  let isVideoPlaying = false;
+  let videoSlideIndex = -1;
 
   if (!slides.length || !prevButton || !nextButton) {
     return;
@@ -34,8 +36,17 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
     slides[0].classList.add("is-active");
   }
 
-  const startTimer = () => {
+  const stopTimer = () => {
     window.clearTimeout(timerId);
+    timerId = null;
+  };
+
+  const startTimer = () => {
+    stopTimer();
+    if (isVideoPlaying && activeIndex === videoSlideIndex) {
+      return;
+    }
+
     timerId = window.setTimeout(() => {
       render(activeIndex + 1);
     }, autoAdvanceMs);
@@ -69,6 +80,8 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
 
   const iframe = carousel.querySelector("iframe");
   if (iframe) {
+    videoSlideIndex = slides.findIndex((slide) => slide.contains(iframe));
+
     const registerYoutubeEvents = () => {
       iframe.contentWindow?.postMessage(
         JSON.stringify({
@@ -90,7 +103,22 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
 
       try {
         const data = JSON.parse(event.data);
-        if (data.event === "onStateChange" && data.info === 0) {
+        if (data.event !== "onStateChange") {
+          return;
+        }
+
+        if (data.info === 1 || data.info === 3) {
+          isVideoPlaying = true;
+          stopTimer();
+        }
+
+        if (data.info === 2) {
+          isVideoPlaying = false;
+          startTimer();
+        }
+
+        if (data.info === 0) {
+          isVideoPlaying = false;
           render(activeIndex + 1);
         }
       } catch {
