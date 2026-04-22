@@ -16,6 +16,33 @@ if (navToggle && siteNav) {
   });
 }
 
+let youtubeApiPromise = null;
+
+const loadYoutubeApi = () => {
+  if (window.YT?.Player) {
+    return Promise.resolve(window.YT);
+  }
+
+  if (youtubeApiPromise) {
+    return youtubeApiPromise;
+  }
+
+  youtubeApiPromise = new Promise((resolve) => {
+    const previousReadyHandler = window.onYouTubeIframeAPIReady;
+
+    window.onYouTubeIframeAPIReady = () => {
+      previousReadyHandler?.();
+      resolve(window.YT);
+    };
+
+    const script = document.createElement("script");
+    script.src = "https://www.youtube.com/iframe_api";
+    document.head.append(script);
+  });
+
+  return youtubeApiPromise;
+};
+
 document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   const slides = Array.from(carousel.querySelectorAll("[data-carousel-slide]"));
   const prevButton = carousel.querySelector("[data-carousel-prev]");
@@ -25,6 +52,7 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   let timerId = null;
   let isVideoPlaying = false;
   let videoSlideIndex = -1;
+  let getVideoState = null;
 
   if (!slides.length || !prevButton || !nextButton) {
     return;
@@ -48,6 +76,13 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
     }
 
     timerId = window.setTimeout(() => {
+      const videoState = getVideoState?.();
+      if (activeIndex === videoSlideIndex && (videoState === 1 || videoState === 3)) {
+        isVideoPlaying = true;
+        stopTimer();
+        return;
+      }
+
       render(activeIndex + 1);
     }, autoAdvanceMs);
   };
@@ -82,6 +117,69 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   if (iframe) {
     videoSlideIndex = slides.findIndex((slide) => slide.contains(iframe));
 
+    const handleVideoState = (state) => {
+      if (state === 1 || state === 3) {
+        isVideoPlaying = true;
+        stopTimer();
+        return;
+      }
+
+      if (state === 0) {
+        isVideoPlaying = false;
+        if (activeIndex === videoSlideIndex) {
+          render(activeIndex + 1);
+        }
+        return;
+      }
+
+      if (state === 2 || state === 5 || state === -1) {
+        isVideoPlaying = false;
+        startTimer();
+      }
+    };
+
+    loadYoutubeApi().then((YT) => {
+      const player = new YT.Player(iframe, {
+        events: {
+          onStateChange: (event) => {
+            handleVideoState(event.data);
+          },
+        },
+      });
+
+      getVideoState = () => {
+        try {
+          return player.getPlayerState();
+        } catch {
+          return null;
+        }
+      };
+    });
+
+    iframe.addEventListener("pointerenter", stopTimer);
+    iframe.addEventListener("focus", stopTimer);
+    iframe.addEventListener("pointerleave", () => {
+      if (!isVideoPlaying) {
+        startTimer();
+      }
+    });
+
+    const parseYoutubeMessage = (message) => {
+      if (typeof message === "string") {
+        try {
+          return JSON.parse(message);
+        } catch {
+          return null;
+        }
+      }
+
+      if (message && typeof message === "object") {
+        return message;
+      }
+
+      return null;
+    };
+
     const registerYoutubeEvents = () => {
       iframe.contentWindow?.postMessage(
         JSON.stringify({
@@ -97,32 +195,21 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
     registerYoutubeEvents();
 
     window.addEventListener("message", (event) => {
-      if (event.source !== iframe.contentWindow || typeof event.data !== "string") {
+      if (event.source !== iframe.contentWindow) {
         return;
       }
 
-      try {
-        const data = JSON.parse(event.data);
-        if (data.event !== "onStateChange") {
-          return;
-        }
+      const data = parseYoutubeMessage(event.data);
+      if (!data) {
+        return;
+      }
 
-        if (data.info === 1 || data.info === 3) {
-          isVideoPlaying = true;
-          stopTimer();
-        }
+      if (data.event === "onStateChange" && typeof data.info === "number") {
+        handleVideoState(data.info);
+      }
 
-        if (data.info === 2) {
-          isVideoPlaying = false;
-          startTimer();
-        }
-
-        if (data.info === 0) {
-          isVideoPlaying = false;
-          render(activeIndex + 1);
-        }
-      } catch {
-        // Ignore unrelated postMessage payloads.
+      if (data.event === "infoDelivery" && typeof data.info?.playerState === "number") {
+        handleVideoState(data.info.playerState);
       }
     });
   }
