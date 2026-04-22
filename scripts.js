@@ -53,6 +53,9 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   let isVideoPlaying = false;
   let videoSlideIndex = -1;
   let getVideoState = null;
+  let stopVideo = () => {
+    isVideoPlaying = false;
+  };
 
   if (!slides.length || !prevButton || !nextButton) {
     return;
@@ -100,15 +103,18 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   };
 
   prevButton.addEventListener("click", () => {
+    stopVideo();
     render(activeIndex - 1);
   });
 
   nextButton.addEventListener("click", () => {
+    stopVideo();
     render(activeIndex + 1);
   });
 
   dots.forEach((dot, index) => {
     dot.addEventListener("click", () => {
+      stopVideo();
       render(index);
     });
   });
@@ -152,6 +158,23 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
           return player.getPlayerState();
         } catch {
           return null;
+        }
+      };
+
+      stopVideo = () => {
+        isVideoPlaying = false;
+
+        try {
+          player.stopVideo();
+        } catch {
+          iframe.contentWindow?.postMessage(
+            JSON.stringify({
+              event: "command",
+              func: "stopVideo",
+              args: [],
+            }),
+            "*",
+          );
         }
       };
     });
