@@ -1421,6 +1421,41 @@ p {
   margin-right: auto;
 }
 
+.press-kit-hero {
+  min-height: auto;
+}
+
+.press-kit-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.press-kit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--space-4);
+}
+
+.press-kit-copy {
+  width: min(100%, 54rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.press-kit-contact-cards {
+  display: flex;
+  justify-content: center;
+  width: min(100%, 35rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.press-kit-contact-cards .contact-card {
+  width: 16rem;
+}
+
 .site-footer {
   padding: var(--space-4) 0;
   border-top: 1px solid rgba(214, 201, 182, 0.8);
