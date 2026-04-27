@@ -1536,6 +1536,35 @@ p {
   box-shadow: 0 24px 50px rgba(88, 34, 15, 0.24);
 }
 
+.press-kit-trailer-list {
+  order: 1;
+  display: grid;
+  gap: 0.85rem;
+  justify-items: start;
+}
+
+.press-kit-trailer-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem 0.9rem;
+}
+
+.press-kit-trailer-download-button {
+  order: 0;
+  min-height: 0;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.82rem;
+  line-height: 1;
+  box-shadow: 0 6px 14px rgba(88, 34, 15, 0.18);
+}
+
+.press-kit-trailer-download-button:hover,
+.press-kit-trailer-download-button:focus-visible {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 12px 26px rgba(88, 34, 15, 0.22);
+}
+
 .press-kit-assets-grid {
   grid-template-columns: minmax(0, 1fr);
   width: min(100%, 62rem);
