@@ -1655,11 +1655,6 @@ p {
 }
 
 .press-kit-asset-preview-logos img:first-child {
-  grid-column: 1 / span 2;
-  height: 4.75rem;
-}
-
-.press-kit-asset-preview-logos img:nth-child(2) {
   height: 7rem;
 }
 
